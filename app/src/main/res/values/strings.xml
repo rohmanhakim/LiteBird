@@ -1,3 +1,5 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/tools">
     <string name="app_name">LiteBird</string>
+    <string name="twitter_consumer_key">p7XK0P5R7Mi9Zk1VuqtTbkXql</string>
+    <string name="twitter_consumer_secret">s00sOlo87REaRtpdlZKCpE3zgF1jm4wFbCkSpWnRWsGrMQhA55</string>
 </resources>
