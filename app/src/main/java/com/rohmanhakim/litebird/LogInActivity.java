@@ -32,13 +32,15 @@ public class LogInActivity extends AppCompatActivity {
 
             @Override
             public void success(Result<TwitterSession> result) {
-                Toast.makeText(LogInActivity.this,result.data.getUserName(),Toast.LENGTH_SHORT);
+                Toast.makeText(LogInActivity.this,result.data.getUserName(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LogInActivity.this,FeedsActivity.class);
+                startActivity(intent);
                 // Do something with result, which provides a TwitterSession for making API calls
             }
 
             @Override
             public void failure(TwitterException exception) {
-                Toast.makeText(LogInActivity.this,exception.getMessage(),Toast.LENGTH_SHORT);
+                Toast.makeText(LogInActivity.this,exception.getMessage(),Toast.LENGTH_SHORT).show();
                 // Do something on failure
             }
         });
