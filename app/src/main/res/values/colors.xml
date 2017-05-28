@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="feed_item_display_name_color">#333333</color>
+    <color name="feed_item_content_color">#666666</color>
     <color name="feed_item_user_name_color">#8f8f8f</color>
 </resources>

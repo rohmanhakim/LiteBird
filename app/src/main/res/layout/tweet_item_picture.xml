@@ -50,6 +50,14 @@
             android:textSize="@dimen/feed_item_text_content_text_size"
             android:textColor="@color/feed_item_content_color"
             tools:text="The best way to not feel hopeless is to get up and do something. Don’t wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope, you will fill yourself with hope."/>
+        <ImageView
+            android:id="@+id/imgAttachment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="8dp"
+            tools:src="@drawable/sample_image"/>
     </LinearLayout>
 
 

@@ -30,7 +30,7 @@ public class FeedsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeds);
 
-        feedsAdapter = new FeedsAdapter(new ArrayList<Tweet>());
+        feedsAdapter = new FeedsAdapter(new ArrayList<Tweet>(),FeedsActivity.this);
         listFeeds = (RecyclerView) findViewById(R.id.listFeeds);
         listFeeds.setLayoutManager(new LinearLayoutManager(this));
         listFeeds.setAdapter(feedsAdapter);
