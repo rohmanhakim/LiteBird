@@ -1,6 +1,10 @@
-<resources xmlns:android="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">LiteBird</string>
     <string name="twitter_consumer_key">p7XK0P5R7Mi9Zk1VuqtTbkXql</string>
     <string name="twitter_consumer_secret">s00sOlo87REaRtpdlZKCpE3zgF1jm4wFbCkSpWnRWsGrMQhA55</string>
     <string name="avatar">Avatar</string>
+    <string name="recyclerview">RecyclerView</string>
+    <string name="litho">Litho</string>
+    <string name="at_symbol">\@%1$s</string>
+    <string name="image_attachment">Image Attachment</string>
 </resources>

@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:padding="@dimen/feed_item_padding">
     <ImageView
@@ -9,16 +9,16 @@
         android:layout_width="@dimen/feed_item_avatar_size"
         android:layout_height="@dimen/feed_item_avatar_size"
         android:adjustViewBounds="true"
-        tools:src="@drawable/ic_avatar"
-        android:contentDescription="@string/avatar" />
+        android:contentDescription="@string/avatar"
+        tools:src="@drawable/ic_avatar" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginLeft="@dimen/feed_item_content_left_margin"
         android:layout_marginStart="@dimen/feed_item_content_left_margin"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -26,38 +26,39 @@
                 android:id="@+id/textDisplayName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Barack Obama"
-                android:textStyle="bold"
                 android:textColor="@color/feed_item_display_name_color"
-                android:textSize="@dimen/feed_item_display_name_text_size"/>
+                android:textSize="@dimen/feed_item_display_name_text_size"
+                android:textStyle="bold"
+                tools:text="Barack Obama" />
             <TextView
                 android:id="@+id/textUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/feed_item_user_name_left_margin"
                 android:layout_marginStart="@dimen/feed_item_user_name_left_margin"
-                tools:text="\@BarackObama"
                 android:layout_toEndOf="@+id/textDisplayName"
                 android:layout_toRightOf="@+id/textDisplayName"
                 android:textColor="@color/feed_item_user_name_color"
-                android:textSize="@dimen/feed_item_user_name_text_size"/>
+                android:textSize="@dimen/feed_item_user_name_text_size"
+                tools:text="\@BarackObama" />
         </RelativeLayout>
         <TextView
             android:id="@+id/textContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/feed_item_text_content_margin_top"
-            android:textSize="@dimen/feed_item_text_content_text_size"
             android:textColor="@color/feed_item_content_color"
+            android:textSize="@dimen/feed_item_text_content_text_size"
             tools:text="The best way to not feel hopeless is to get up and do something. Don’t wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope, you will fill yourself with hope."/>
         <ImageView
             android:id="@+id/imgAttachment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
             android:layout_marginTop="8dp"
-            tools:src="@drawable/sample_image"/>
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/image_attachment"
+            android:scaleType="fitCenter"
+            tools:src="@drawable/sample_image" />
     </LinearLayout>
 
 

@@ -3,6 +3,8 @@ package com.rohmanhakim.litebird;
 import android.app.Application;
 import android.util.Log;
 
+import com.facebook.soloader.SoLoader;
+import com.facebook.stetho.Stetho;
 import com.twitter.sdk.android.core.DefaultLogger;
 import com.twitter.sdk.android.core.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -23,5 +25,7 @@ public class LiteBirdApplication extends Application {
                 .debug(true)
                 .build();
         Twitter.initialize(config);
+        SoLoader.init(this, false);
+        Stetho.initializeWithDefaults(this);
     }
 }

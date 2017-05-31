@@ -18,7 +18,6 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int MEDIA_TYPE_TEXT = 0;
     private static final int MEDIA_TYPE_PHOTO = 1;
-    private static final int MEDIA_TYPE_VIDEO = 2;
 
     private List<Tweet> feeds = new ArrayList<>();
     private Context context;
@@ -30,13 +29,11 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        if(feeds.get(position).extendedEntities != null){
-            if(feeds.get(position).extendedEntities.media != null) {
+        if (feeds.get(position).extendedEntities != null) {
+            if (feeds.get(position).extendedEntities.media != null) {
                 switch (feeds.get(position).extendedEntities.media.get(0).type) {
                     case "photo":
                         return MEDIA_TYPE_PHOTO;
-                    case "video":
-                        return MEDIA_TYPE_VIDEO;
                     default:
                         return MEDIA_TYPE_TEXT;
                 }
@@ -48,15 +45,15 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
-        switch (viewType){
+        switch (viewType) {
             case MEDIA_TYPE_PHOTO:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item_picture,parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item_picture, parent, false);
                 return new FeedPictureViewHolder(view);
             case MEDIA_TYPE_TEXT:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item,parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item, parent, false);
                 return new FeedViewHolder(view);
             default:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item,parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item, parent, false);
                 return new FeedViewHolder(view);
         }
 
@@ -64,20 +61,20 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Tweet tweet = feeds.get(position);
-        switch (holder.getItemViewType()){
+        final Tweet tweet = feeds.get(position);
+        switch (holder.getItemViewType()) {
             case MEDIA_TYPE_PHOTO:
                 FeedPictureViewHolder feedPictureViewHolder = (FeedPictureViewHolder) holder;
-                feedPictureViewHolder.textDisplayName.setText("[Photo]" + tweet.user.name);
-                feedPictureViewHolder.textUserName.setText("@" + tweet.user.screenName);
+                feedPictureViewHolder.textDisplayName.setText(tweet.user.name);
+                feedPictureViewHolder.textUserName.setText(context.getString(R.string.at_symbol, tweet.user.screenName));
                 Glide.with(context).load(tweet.user.profileImageUrl).into(feedPictureViewHolder.imgAvatar);
                 Glide.with(context).load(tweet.extendedEntities.media.get(0).mediaUrl).into(feedPictureViewHolder.imgAttachment);
                 feedPictureViewHolder.textContent.setText(tweet.text);
                 break;
             case MEDIA_TYPE_TEXT:
                 FeedViewHolder feedViewHolder = (FeedViewHolder) holder;
-                feedViewHolder.textDisplayName.setText("[Text]" + tweet.user.name);
-                feedViewHolder.textUserName.setText("@" + tweet.user.screenName);
+                feedViewHolder.textDisplayName.setText(tweet.user.name);
+                feedViewHolder.textUserName.setText(context.getString(R.string.at_symbol, tweet.user.screenName));
                 Glide.with(context).load(tweet.user.profileImageUrl).into(feedViewHolder.imgAvatar);
                 feedViewHolder.textContent.setText(tweet.text);
                 break;
@@ -91,7 +88,7 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
-        switch (holder.getItemViewType()){
+        switch (holder.getItemViewType()) {
             case MEDIA_TYPE_PHOTO:
                 FeedPictureViewHolder feedPictureViewHolder = (FeedPictureViewHolder) holder;
                 feedPictureViewHolder.textDisplayName.setText(null);

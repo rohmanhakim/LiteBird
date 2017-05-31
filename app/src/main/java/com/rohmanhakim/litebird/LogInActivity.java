@@ -1,8 +1,8 @@
 package com.rohmanhakim.litebird;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -33,7 +33,7 @@ public class LogInActivity extends AppCompatActivity {
             @Override
             public void success(Result<TwitterSession> result) {
                 Toast.makeText(LogInActivity.this,result.data.getUserName(),Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(LogInActivity.this,FeedsActivity.class);
+                Intent intent = new Intent(LogInActivity.this, MainActivity.class);
                 startActivity(intent);
                 // Do something with result, which provides a TwitterSession for making API calls
             }
