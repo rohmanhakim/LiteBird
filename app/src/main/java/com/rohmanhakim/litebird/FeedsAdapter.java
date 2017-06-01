@@ -18,6 +18,7 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int MEDIA_TYPE_TEXT = 0;
     private static final int MEDIA_TYPE_PHOTO = 1;
+    private static final int MEDIA_TYPE_RETWEET = 2;
 
     private List<Tweet> feeds = new ArrayList<>();
     private Context context;
@@ -39,6 +40,8 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
         }
+        if (feeds.get(position).retweetedStatus != null)
+            return MEDIA_TYPE_RETWEET;
         return MEDIA_TYPE_TEXT;
     }
 
@@ -52,6 +55,9 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case MEDIA_TYPE_TEXT:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item, parent, false);
                 return new FeedViewHolder(view);
+            case MEDIA_TYPE_RETWEET:
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item_retweet, parent, false);
+                return new FeedRetweetViewHolder(view);
             default:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.tweet_item, parent, false);
                 return new FeedViewHolder(view);
@@ -63,6 +69,24 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final Tweet tweet = feeds.get(position);
         switch (holder.getItemViewType()) {
+            case MEDIA_TYPE_RETWEET:
+                FeedRetweetViewHolder feedRetweetViewHolder = (FeedRetweetViewHolder) holder;
+                feedRetweetViewHolder.textDisplayName.setText(tweet.user.name);
+                feedRetweetViewHolder.textUserName.setText(context.getString(R.string.at_symbol, tweet.user.screenName));
+                Glide.with(context).load(tweet.user.profileImageUrl).into(feedRetweetViewHolder.imgAvatar);
+                feedRetweetViewHolder.textContent.setText(tweet.text);
+
+                feedRetweetViewHolder.textRetweetDisplayName.setText(tweet.retweetedStatus.user.name);
+                feedRetweetViewHolder.textRetweetUserName.setText(context.getString(R.string.at_symbol, tweet.retweetedStatus.user.screenName));
+                feedRetweetViewHolder.textRetweetContent.setText(tweet.retweetedStatus.text);
+                Glide.with(context).load(tweet.retweetedStatus.user.profileImageUrl).into(feedRetweetViewHolder.imgRetweetAvatar);
+                feedRetweetViewHolder.textContent.setText(tweet.retweetedStatus.text);
+                if (tweet.retweetedStatus.extendedEntities != null) {
+                    if (tweet.retweetedStatus.extendedEntities.media != null) {
+                        Glide.with(context).load(tweet.retweetedStatus.extendedEntities.media.get(0).mediaUrl).into(feedRetweetViewHolder.imgRetweetAttachment);
+                    }
+                }
+                break;
             case MEDIA_TYPE_PHOTO:
                 FeedPictureViewHolder feedPictureViewHolder = (FeedPictureViewHolder) holder;
                 feedPictureViewHolder.textDisplayName.setText(tweet.user.name);
@@ -89,6 +113,19 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onViewRecycled(RecyclerView.ViewHolder holder) {
         switch (holder.getItemViewType()) {
+            case MEDIA_TYPE_RETWEET:
+                FeedRetweetViewHolder feedRetweetViewHolder = (FeedRetweetViewHolder) holder;
+                feedRetweetViewHolder.textDisplayName.setText(null);
+                feedRetweetViewHolder.textUserName.setText(null);
+                feedRetweetViewHolder.imgAvatar.setImageDrawable(null);
+                feedRetweetViewHolder.textContent.setText(null);
+
+                feedRetweetViewHolder.textRetweetDisplayName.setText(null);
+                feedRetweetViewHolder.textRetweetUserName.setText(null);
+                feedRetweetViewHolder.imgRetweetAvatar.setImageDrawable(null);
+                feedRetweetViewHolder.textContent.setText(null);
+                feedRetweetViewHolder.imgRetweetAttachment.setImageDrawable(null);
+                break;
             case MEDIA_TYPE_PHOTO:
                 FeedPictureViewHolder feedPictureViewHolder = (FeedPictureViewHolder) holder;
                 feedPictureViewHolder.textDisplayName.setText(null);
@@ -148,6 +185,35 @@ class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             textDisplayName = (TextView) itemView.findViewById(R.id.textDisplayName);
             textUserName = (TextView) itemView.findViewById(R.id.textUserName);
             textContent = (TextView) itemView.findViewById(R.id.textContent);
+        }
+    }
+
+    private class FeedRetweetViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView imgAvatar;
+        TextView textDisplayName;
+        TextView textUserName;
+        TextView textContent;
+
+        ImageView imgRetweetAvatar;
+        TextView textRetweetDisplayName;
+        TextView textRetweetUserName;
+        TextView textRetweetContent;
+        ImageView imgRetweetAttachment;
+
+        FeedRetweetViewHolder(View itemView) {
+            super(itemView);
+            imgAvatar = (ImageView) itemView.findViewById(R.id.imgAvatar);
+            imgRetweetAttachment = (ImageView) itemView.findViewById(R.id.imgAttachment);
+            textDisplayName = (TextView) itemView.findViewById(R.id.textDisplayName);
+            textUserName = (TextView) itemView.findViewById(R.id.textUserName);
+            textContent = (TextView) itemView.findViewById(R.id.textContent);
+
+            imgRetweetAvatar = (ImageView) itemView.findViewById(R.id.imgRetweetAvatar);
+            textRetweetDisplayName = (TextView) itemView.findViewById(R.id.textRetweetDisplayName);
+            textRetweetUserName = (TextView) itemView.findViewById(R.id.textRetweettUserName);
+            textRetweetContent = (TextView) itemView.findViewById(R.id.textRetweetContent);
+            imgRetweetAttachment = (ImageView) itemView.findViewById(R.id.imgRetweetAttachment);
         }
     }
 }

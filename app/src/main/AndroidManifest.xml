@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FeedsActivity" />
-        <activity android:name=".LithoFeedActivity" />
+        <activity android:name=".litho.LithoFeedActivity" />
     </application>
 
 </manifest>

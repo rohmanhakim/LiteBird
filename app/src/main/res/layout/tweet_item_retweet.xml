@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/feed_item_padding">
+
+    <ImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="@dimen/feed_item_avatar_size"
+        android:layout_height="@dimen/feed_item_avatar_size"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/avatar"
+        tools:src="@drawable/ic_avatar" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/feed_item_content_left_margin"
+        android:layout_marginStart="@dimen/feed_item_content_left_margin"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textDisplayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/feed_item_display_name_color"
+                android:textSize="@dimen/feed_item_display_name_text_size"
+                android:textStyle="bold"
+                tools:text="Barack Obama" />
+
+            <TextView
+                android:id="@+id/textUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/feed_item_user_name_left_margin"
+                android:layout_marginStart="@dimen/feed_item_user_name_left_margin"
+                android:layout_toEndOf="@+id/textDisplayName"
+                android:layout_toRightOf="@+id/textDisplayName"
+                android:textColor="@color/feed_item_user_name_color"
+                android:textSize="@dimen/feed_item_user_name_text_size"
+                tools:text="\@BarackObama" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/feed_item_text_content_margin_top"
+            android:textColor="@color/feed_item_content_color"
+            android:textSize="@dimen/feed_item_text_content_text_size"
+            tools:text="The best way to not feel hopeless is to get up and do something. Don’t wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope, you will fill yourself with hope." />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_bordered_bg"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imgRetweetAvatar"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/retweet_avatar"
+                tools:src="@drawable/ic_avatar" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textRetweetDisplayName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/feed_item_display_name_color"
+                        android:textSize="@dimen/feed_item_display_name_text_size"
+                        android:textStyle="bold"
+                        tools:text="Barack Obama" />
+
+                    <TextView
+                        android:id="@+id/textRetweettUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/feed_item_user_name_left_margin"
+                        android:layout_marginStart="@dimen/feed_item_user_name_left_margin"
+                        android:layout_toEndOf="@+id/textRetweetDisplayName"
+                        android:layout_toRightOf="@+id/textRetweetDisplayName"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:textColor="@color/feed_item_user_name_color"
+                        android:textSize="@dimen/feed_item_user_name_text_size"
+                        tools:text="\@BarackObamaqwreadasdasdasd" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/textRetweetContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/feed_item_text_content_margin_top"
+                    android:textColor="@color/feed_item_content_color"
+                    android:textSize="@dimen/feed_item_text_content_text_size"
+                    tools:text="The best way to not feel hopeless is to get up and do something. Don’t wait for good things to happen to you. If you go out and make some good things happen, you will fill the world with hope, you will fill yourself with hope." />
+
+                <ImageView
+                    android:id="@+id/imgRetweetAttachment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/image_attachment"
+                    android:scaleType="fitCenter"
+                    tools:src="@drawable/sample_image" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -7,4 +7,5 @@
     <string name="litho">Litho</string>
     <string name="at_symbol">\@%1$s</string>
     <string name="image_attachment">Image Attachment</string>
+    <string name="retweet_avatar">Retweet Avatar</string>
 </resources>

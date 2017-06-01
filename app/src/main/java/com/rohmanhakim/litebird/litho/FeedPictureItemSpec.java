@@ -1,4 +1,4 @@
-package com.rohmanhakim.litebird;
+package com.rohmanhakim.litebird.litho;
 
 import com.facebook.litho.Column;
 import com.facebook.litho.ComponentContext;
@@ -7,6 +7,7 @@ import com.facebook.litho.Row;
 import com.facebook.litho.annotations.LayoutSpec;
 import com.facebook.litho.annotations.OnCreateLayout;
 import com.facebook.litho.annotations.Prop;
+import com.rohmanhakim.litebird.GlideImage;
 import com.twitter.sdk.android.core.models.Tweet;
 
 import static android.graphics.Color.TRANSPARENT;

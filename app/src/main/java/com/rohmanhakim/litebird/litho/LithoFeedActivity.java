@@ -1,4 +1,4 @@
-package com.rohmanhakim.litebird;
+package com.rohmanhakim.litebird.litho;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import com.facebook.litho.LithoView;
 import com.facebook.litho.widget.LinearLayoutInfo;
 import com.facebook.litho.widget.Recycler;
 import com.facebook.litho.widget.RecyclerBinder;
+import com.rohmanhakim.litebird.MainActivity;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterApiClient;
